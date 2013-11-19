@@ -1,0 +1,8 @@
+diagram {
+    Patron ->> Waiter                       [label = "order food"];
+               Waiter ->> Cook              [label = "order food"];
+    Patron <<- Waiter                       [label = "serve wine"];
+               Waiter <<- Cook              [label = "pickup"];
+    Patron <<- Waiter                       [label = "serve food"];
+    Patron                     ->> Cashier  [label = "pay"];
+}

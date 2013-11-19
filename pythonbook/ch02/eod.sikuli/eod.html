@@ -1,0 +1,120 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>eod.sikuli\eod.sikuli</h2> <a href="eod.sikuli\eod.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> random
+
+reg = Region(<span class="skw">find</span>(<img src="window.png" />))
+
+cell = {
+    <span class="str">'unknown'</span>: [
+        Pattern(<img src="cell_unknown_1.png" />).similar(<span class="dig">0.98</span>),
+        Pattern(<img src="cell_unknown_2.png" />).similar(<span class="dig">0.98</span>),
+        Pattern(<img src="cell_unknown_3.png" />).similar(<span class="dig">0.98</span>),
+        ],
+    <span class="str">'question'</span>: Pattern(<img src="cell_question.png" />).similar(<span class="dig">0.90</span>),
+    <span class="str">'exploded'</span>: Pattern(<img src="cell_exploded.png" />).similar(<span class="dig">0.90</span>)}
+
+patterns = [
+    Pattern(<img src="pattern_1of9_nw1.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">14</span>,-<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_ne1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>), Pattern(<img src="pattern_1of9_ne2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_sw1.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">14</span>,<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_se1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>), Pattern(<img src="pattern_1of9_se2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>),
+    Pattern(<img src="pattern_121_e1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>), Pattern(<img src="pattern_121_e2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>), Pattern(<img src="pattern_121_e3.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>), Pattern(<img src="pattern_121_e4.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>),
+    Pattern(<img src="pattern_121_s1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">20</span>,<span class="dig">10</span>), Pattern(<img src="pattern_121_s2.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">16</span>,<span class="dig">11</span>),
+    ]
+
+<span class="kw">def</span> unknownCellExists():
+    result = False
+    <span class="kw">for</span> cu <span class="kw">in</span> cell[<span class="str">'unknown'</span>]:
+        <span class="kw">if</span> reg.exists(cu):
+            result = True
+    <span class="kw">return</span> result
+
+<span class="kw">def</span> flag(cell):
+    <span class="skw">rightClick</span>(cell)
+
+<span class="kw">while</span> unknownCellExists():
+    <span class="kw">for</span> pattern <span class="kw">in</span> patterns:
+        <span class="kw">while</span> reg.exists(pattern):
+            <span class="kw">print</span>(pattern)
+            flag(reg.<span class="skw">find</span>(pattern))
+            <span class="kw">if</span> reg.exists(cell[<span class="str">'question'</span>]):
+                q = reg.<span class="skw">find</span>(cell[<span class="str">'question'</span>])
+                <span class="skw">rightClick</span>(q)
+                <span class="skw">rightClick</span>(q)
+    <span class="kw">if</span> unknownCellExists():
+        <span class="skw">click</span>(random.choice(cell[<span class="str">'unknown'</span>]))
+    <span class="kw">if</span> exists(cell[<span class="str">'exploded'</span>]):
+        <span class="kw">break</span>
+</pre>
+</body>
+</html>
