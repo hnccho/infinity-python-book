@@ -1,4 +1,4 @@
-#!python3
+#!/usr/bin/env python3
 
 teamstandings = [('LG', 63, 44, 0),
     ('삼성', 61, 44, 2),

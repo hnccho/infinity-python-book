@@ -1,4 +1,4 @@
-#!python
+#!/usr/bin/env python
 
 left = 8
 for right in range(1, 10):
