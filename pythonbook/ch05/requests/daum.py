@@ -1,3 +1,5 @@
+#!python3
+
 import requests
 
 url = "http://apis.daum.net/search/board"

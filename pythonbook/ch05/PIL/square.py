@@ -1,3 +1,5 @@
+#!python
+
 from PIL import Image, ImageDraw
 
 SIZE = 256

@@ -1,4 +1,4 @@
-#!C:\Python27\python.exe
+#!python2
 
 from pygooglechart import PieChart3D
 
