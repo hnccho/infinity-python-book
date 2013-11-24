@@ -1,0 +1,1 @@
+cat hostlist.txt | xargs -I {} changepw.py {} yong old123 new123

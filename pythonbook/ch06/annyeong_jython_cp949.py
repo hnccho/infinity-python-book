@@ -1,0 +1,3 @@
+# -*- coding: cp949 -*-
+
+print('¾È³ç, Jython!')
