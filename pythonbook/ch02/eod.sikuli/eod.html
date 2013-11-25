@@ -85,11 +85,17 @@ cell = {
 
 patterns = [
     Pattern(<img src="pattern_1of9_nw1.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">14</span>,-<span class="dig">14</span>),
-    Pattern(<img src="pattern_1of9_ne1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>), Pattern(<img src="pattern_1of9_ne2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_ne1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_ne2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,-<span class="dig">14</span>),
     Pattern(<img src="pattern_1of9_sw1.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">14</span>,<span class="dig">14</span>),
-    Pattern(<img src="pattern_1of9_se1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>), Pattern(<img src="pattern_1of9_se2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>),
-    Pattern(<img src="pattern_121_e1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>), Pattern(<img src="pattern_121_e2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>), Pattern(<img src="pattern_121_e3.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>), Pattern(<img src="pattern_121_e4.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>),
-    Pattern(<img src="pattern_121_s1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">20</span>,<span class="dig">10</span>), Pattern(<img src="pattern_121_s2.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">16</span>,<span class="dig">11</span>),
+    Pattern(<img src="pattern_1of9_se1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>),
+    Pattern(<img src="pattern_1of9_se2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">14</span>,<span class="dig">14</span>),
+    Pattern(<img src="pattern_121_e1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>),
+    Pattern(<img src="pattern_121_e2.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,-<span class="dig">18</span>),
+    Pattern(<img src="pattern_121_e3.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>),
+    Pattern(<img src="pattern_121_e4.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">9</span>,<span class="dig">18</span>),
+    Pattern(<img src="pattern_121_s1.png" />).similar(<span class="dig">0.97</span>).targetOffset(<span class="dig">20</span>,<span class="dig">10</span>),
+    Pattern(<img src="pattern_121_s2.png" />).similar(<span class="dig">0.97</span>).targetOffset(-<span class="dig">16</span>,<span class="dig">11</span>),
     ]
 
 <span class="kw">def</span> unknownCellExists():
@@ -99,14 +105,11 @@ patterns = [
             result = True
     <span class="kw">return</span> result
 
-<span class="kw">def</span> flag(cell):
-    <span class="skw">rightClick</span>(cell)
-
 <span class="kw">while</span> unknownCellExists():
     <span class="kw">for</span> pattern <span class="kw">in</span> patterns:
         <span class="kw">while</span> reg.exists(pattern):
             <span class="kw">print</span>(pattern)
-            flag(reg.<span class="skw">find</span>(pattern))
+            <span class="skw">rightClick</span>(reg.<span class="skw">find</span>(pattern))
             <span class="kw">if</span> reg.exists(cell[<span class="str">'question'</span>]):
                 q = reg.<span class="skw">find</span>(cell[<span class="str">'question'</span>])
                 <span class="skw">rightClick</span>(q)
