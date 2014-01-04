@@ -1,0 +1,23 @@
+Using Beach.java in Jython
+::
+    
+    >>> import Beach
+    >>> beach = Beach("Cocoa Beach","Cocoa Beach")
+    >>> beach.getName()
+    u'Cocoa Beach'
+    >>> print beach.getName()
+    Cocoa Beach
+
+
+As we had learned in Chapter 8, one thing you'll need to do is
+ensure that the Java class you wish to use resides within your
+CLASSPATH. In the example above, I created a JAR file that
+contained the Beach class and then put that JAR on the CLASSPATH.
+
+It is also possible to extend or subclass Java classes via Jython
+classes. This allows us to extend the functionality of a given Java
+class using Jython objects, which can be quite helpful at times.
+The next example shows a Jython class extending a Java class that
+includes some calculation functionality. The Jython class then adds
+another calculation method and makes use of the calculation methods
+from both the Java class and the Jython class.
