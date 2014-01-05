@@ -3,7 +3,7 @@
 """
 Changes password of a user account of remote system via telnet.
 
-Yong Choi (sk8er.choi@gmail.com)
+Yong Choi <sk8er.choi@gmail.com>
 """
 
 import pexpect, getopt, sys, time, os
