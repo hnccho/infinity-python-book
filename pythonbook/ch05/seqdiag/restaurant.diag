@@ -1,4 +1,5 @@
 diagram {
+    default_fontsize = 16;
     Patron ->> Waiter                       [label = "order food"];
                Waiter ->> Cook              [label = "order food"];
     Patron <<- Waiter                       [label = "serve wine"];
